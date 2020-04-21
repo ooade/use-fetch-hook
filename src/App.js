@@ -6,13 +6,20 @@ const App = () => {
 	const [query, setQuery] = useState('');
 
 	const url = query && `https://hn.algolia.com/api/v1/search?query=${query}`;
+
 	const { status, data, error } = useFetch(url);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		setQuery(e.target.search.value);
-		e.target.search.value = '';
+
+		const query = e.target.search.value;
+		if (query) {
+			setQuery(query);
+			e.target.search.value = '';
+		}
 	};
+
+	const articles = data.hits;
 
 	return (
 		<div className="App">
@@ -33,19 +40,20 @@ const App = () => {
 				)}
 				{status === 'error' && <div>{error}</div>}
 				{status === 'fetching' && <div className="loading"></div>}
-				{status === 'fetched' && query && (
-					<div className="query"> Search results for {query} </div>
+				{status === 'fetched' && (
+					<>
+						<div className="query"> Search results for {query} </div>
+						{articles.length === 0 && <div> No articles found! :( </div>}
+						{articles.map((article) => (
+							<div className="article" key={article.objectID}>
+								<a target="_blank" href={article.url} rel="noopener noreferrer">
+									{article.title}
+								</a>{' '}
+								by {article.author}
+							</div>
+						))}
+					</>
 				)}
-				{status === 'fetched' &&
-					data.hits &&
-					data.hits.map((article) => (
-						<div className="article" key={article.objectID}>
-							<a target="_blank" href={article.url} rel="noopener noreferrer">
-								{article.title}
-							</a>{' '}
-							by {article.author}
-						</div>
-					))}
 			</main>
 		</div>
 	);
