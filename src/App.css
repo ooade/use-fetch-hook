@@ -1,0 +1,93 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	padding: 1rem;
+	transition: all 0.5s;
+}
+
+header {
+	background: #253ec3;
+	color: #fff;
+	height: 80px;
+	display: none;
+}
+
+a {
+	color: #222;
+}
+
+.Form {
+	display: flex;
+}
+
+.Form input {
+	height: 40px;
+	width: 350px;
+	border: 1px solid #ddd;
+	outline: none;
+	padding: 0px 1rem;
+	font-size: 16px;
+}
+
+.Form button {
+	height: 40px;
+	width: 100px;
+	background: #222;
+	border: none;
+	cursor: pointer;
+	color: #fff;
+}
+
+.query {
+	padding-bottom: 2rem;
+}
+
+.loading {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	display: inline-block;
+	background: #222;
+	position: relative;
+}
+
+.loading::before {
+	position: absolute;
+	content: '';
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	display: block;
+	border-radius: 50%;
+	margin-left: -5px;
+	margin-top: -5px;
+	border: 5px solid transparent;
+	border-top-color: #222;
+	border-bottom-color: #222;
+	animation: spin 0.8s ease-out 0s infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg) scale(1.2);
+	}
+	50% {
+		transform: rotate(180deg) scale(1.2);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+main {
+	padding: 1rem;
+}
+
+.article {
+	line-height: 2;
+}
