@@ -4,6 +4,8 @@ TLDR; This repo shows how to build a custom hook to fetch and cache data!
 
 Here's [a deployed version](https://use-fetch-hook-example.netlify.app) of this example on Netlify!
 
+I wrote a piece about it on [Smashing Magazine](https://www.smashingmagazine.com/2020/07/custom-react-hook-fetch-cache-data/).
+
 ## Contents
 
 - [Installation](#installation)
