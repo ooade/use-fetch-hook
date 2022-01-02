@@ -24,7 +24,7 @@ export const useFetch = (url) => {
 
 	useEffect(() => {
 		let cancelRequest = false;
-		if (!url) return;
+		if (!url || !url.trim()) return;
 
 		const fetchData = async () => {
 			dispatch({ type: 'FETCHING' });
